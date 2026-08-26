@@ -1,0 +1,14 @@
+.git
+.idea
+.vscode
+.env
+.env.*
+!/.env.example
+vendor
+node_modules
+storage/app/boe
+storage/logs/*.log
+bootstrap/cache/*.php
+services/embeddings/__pycache__
+.pytest_cache
+.DS_Store

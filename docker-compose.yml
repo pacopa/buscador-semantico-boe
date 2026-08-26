@@ -1,0 +1,45 @@
+services:
+    app:
+        build:
+            context: .
+            dockerfile: docker/php.Dockerfile
+        ports:
+            - "8000:8000"
+        environment:
+            APP_ENV: local
+            APP_DEBUG: "true"
+            SESSION_DRIVER: file
+            BOE_DATA_STORE: mongodb
+            BOE_MONGODB_URI: mongodb://mongo:27017
+            BOE_MONGODB_DATABASE: boe_search
+            BOE_EMBEDDING_SERVICE_URL: http://embeddings:8000
+            BOE_EMBEDDING_ALLOW_HASH_FALLBACK: "true"
+        depends_on:
+            - mongo
+            - embeddings
+        volumes:
+            - .:/var/www/html
+            - vendor:/var/www/html/vendor
+
+    mongo:
+        image: mongo:7
+        ports:
+            - "27017:27017"
+        volumes:
+            - mongo-data:/data/db
+
+    embeddings:
+        build:
+            context: ./services/embeddings
+        ports:
+            - "8001:8000"
+        environment:
+            MODEL_NAME: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+            ALLOW_HASH_FALLBACK: "true"
+        volumes:
+            - hf-cache:/root/.cache/huggingface
+
+volumes:
+    mongo-data:
+    hf-cache:
+    vendor:
