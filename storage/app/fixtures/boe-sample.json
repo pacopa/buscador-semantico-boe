@@ -3,10 +3,10 @@
   "documents": [
     {
       "boe_id": "SYNTHETIC-BOE-0001",
-      "title": "Synthetic example: environmental information notice",
+      "title": "Ejemplo sintético: aviso de información ambiental",
       "date": "2024-01-01",
       "source_url": "https://example.invalid/boe-sample",
-      "text": "This synthetic notice illustrates a public-information workflow. It contains no text copied from BOE publications. Organizations must publish clear environmental information, provide a contact channel, and record the publication date."
+      "text": "Este aviso sintético ilustra un flujo de información pública. No contiene texto copiado de publicaciones del BOE. Las organizaciones deben publicar información ambiental clara, facilitar un canal de contacto y registrar la fecha de publicación."
     }
   ]
 }

@@ -4,21 +4,21 @@ Buscador Semántico BOE indexa publicaciones disponibles públicamente en el BOE
 
 ## Inicio rápido
 
-1. Creá un archivo local e ignorado `.env` con la configuración de tu entorno. Generá una clave de aplicación con `php artisan key:generate` después de instalar dependencias o dentro del contenedor.
-2. Construí y levantá los servicios:
+1. Crea un archivo local e ignorado `.env` con la configuración de tu entorno. Genera una clave de aplicación con `php artisan key:generate` después de instalar dependencias o dentro del contenedor.
+2. Construye y levanta los servicios:
 
    ```bash
    docker compose build
    docker compose up -d
    ```
 
-3. Cargá el fixture sintético sin usar red:
+3. Carga el fixture sintético sin usar red:
 
    ```bash
    docker compose exec app php artisan boe:ingest --sample --replace
    ```
 
-4. Abrí `http://localhost:8000` y buscá un tema. El servicio de embeddings expone `http://localhost:8001/health`.
+4. Abre `http://localhost:8000` y busca un tema. El servicio de embeddings expone `http://localhost:8001/health`.
 
 ## Alcance y funciones
 
@@ -47,7 +47,7 @@ La aplicación descarga o carga documentos, extrae el contenido, genera embeddin
 
 ## Configuración y seguridad
 
-Mantené `.env` fuera del control de versiones y proporcioná `APP_KEY` desde ese archivo o desde el entorno de despliegue. No hay una clave de desarrollo en Docker Compose.
+Mantén `.env` fuera del control de versiones y proporciona `APP_KEY` desde ese archivo o desde el entorno de despliegue. No hay una clave de desarrollo en Docker Compose.
 
 Las variables de proyecto son:
 
@@ -60,11 +60,11 @@ Las variables de proyecto son:
 | `BOE_EMBEDDING_SERVICE_URL` | URL del servicio de embeddings. |
 | `BOE_EMBEDDING_ALLOW_HASH_FALLBACK` | Habilita el fallback determinista para desarrollo. |
 
-Revisá límites de red, retención de caché y acceso a MongoDB antes de desplegar. La caché de documentos descargados se almacena en `storage/app/boe/boe-documents/`.
+Revisa los límites de red, la retención de caché y el acceso a MongoDB antes de desplegar. La caché de documentos descargados se almacena en `storage/app/boe/boe-documents/`.
 
 ## Tests y validación
 
-Con las dependencias instaladas, ejecutá:
+Con las dependencias instaladas, ejecuta:
 
 ```bash
 php artisan test
@@ -72,11 +72,11 @@ php artisan test
 php scripts/validate_core.php
 ```
 
-En Docker, anteponé `docker compose exec app` a los comandos PHP. Para comprobar las vistas, usá `php artisan view:cache` y luego `php artisan view:clear`.
+En Docker, antepón `docker compose exec app` a los comandos PHP. Para comprobar las vistas, usa `php artisan view:cache` y luego `php artisan view:clear`.
 
 ## Fuentes y atribución
 
-Las ingestas reales apuntan a páginas públicas de `boe.es`; cada resultado conserva su URL de origen para facilitar la verificación. Consultá las condiciones de uso, avisos legales y requisitos de atribución de la fuente antes de redistribuir contenido descargado. El fixture incluido es totalmente sintético y no contiene texto reutilizado de publicaciones del BOE.
+Las ingestas reales apuntan a páginas públicas de `boe.es`; cada resultado conserva su URL de origen para facilitar la verificación. Consulta las condiciones de uso, avisos legales y requisitos de atribución de la fuente antes de redistribuir contenido descargado. El fixture incluido es totalmente sintético y no contiene texto reutilizado de publicaciones del BOE.
 
 ## Licencia
 
